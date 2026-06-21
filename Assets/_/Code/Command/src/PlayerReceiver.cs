@@ -91,12 +91,14 @@ namespace Command.Runtime
 
         public void Rotate(float angle, Action completionCallBack)
         {
-            Quaternion initialRotation = transform.rotation;
+            _initialRotation = transform.rotation;
+            _destinationRotation = Quaternion.Euler(new Vector3(0, angle, 0));
+            _completionCallBack = completionCallBack;
         }
 
         public void Move(Vector3 direction, float distance, Action completionCallBack)
         {
-
+            Vector3 initialPostion = transform.position;
         }
 
         #endregion
@@ -104,8 +106,11 @@ namespace Command.Runtime
         #region Private and Protected
 
         private Quaternion _initialRotation;
+        private Quaternion _destinationRotation;
         private Vector3 _initialPosition;
-
+        private Vector3 _destinationPosition;
+        private Action _completionCallBack;
+        
         private enum State
         {
             Waiting,
