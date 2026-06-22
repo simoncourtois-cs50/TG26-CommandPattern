@@ -338,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 155733911}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 869192014}
+        m_TargetAssemblyTypeName: Command.Runtime.UIPresenter, Command.Runtime
+        m_MethodName: AddClockRotation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &155733911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,7 +954,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 28.7}
+  m_AnchoredPosition: {x: 0, y: 28.699951}
   m_SizeDelta: {x: 800, y: 206}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &710575388
@@ -1027,7 +1039,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 710575391}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 869192014}
+        m_TargetAssemblyTypeName: Command.Runtime.UIPresenter, Command.Runtime
+        m_MethodName: AddCounterClockRotation
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &710575391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,6 +1151,7 @@ GameObject:
   - component: {fileID: 869192012}
   - component: {fileID: 869192011}
   - component: {fileID: 869192010}
+  - component: {fileID: 869192014}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1217,6 +1242,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &869192014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869192009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f65d8cb9d66684eb9ea93b8f9e8c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Command.Runtime::Command.Runtime.UIPresenter
+  _playerReceiver: {fileID: 1290128004}
 --- !u!1 &1032616669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,7 +1631,7 @@ GameObject:
   - component: {fileID: 1290128001}
   - component: {fileID: 1290128000}
   - component: {fileID: 1290127999}
-  - component: {fileID: 1290128003}
+  - component: {fileID: 1290128004}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1695,7 +1733,7 @@ Transform:
   - {fileID: 1909663966}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1290128003
+--- !u!114 &1290128004
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1704,11 +1742,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290127997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8602128003d7e746a78d435ed0b4413, type: 3}
+  m_Script: {fileID: 11500000, guid: 9273bc8da2b2ad14ab216adc763f1393, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ajc.review.playerMovement.CommandBasedPlayerMovement
-  _speed: 1
-  _angularVelocity: 50
+  m_EditorClassIdentifier: Command.Runtime::Command.Runtime.PlayerReceiver
+  _animationLength: 1
 --- !u!1 &1294841789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2515,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1932606756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 869192014}
+        m_TargetAssemblyTypeName: Command.Runtime.UIPresenter, Command.Runtime
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1932606756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2712,7 +2761,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1986315533}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 869192014}
+        m_TargetAssemblyTypeName: Command.Runtime.UIPresenter, Command.Runtime
+        m_MethodName: AddMoveForward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1986315533
 MonoBehaviour:
   m_ObjectHideFlags: 0

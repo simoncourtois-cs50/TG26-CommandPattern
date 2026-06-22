@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Command.Runtime
 {
@@ -16,11 +17,9 @@ namespace Command.Runtime
         {
             if (_commandList.Count <= 0) return;
 
-            ICommand nextCommand = _commandList[_currentIndex];
+            ICommand nextCommand = _commandList[0];
 
             _commandList.Remove(nextCommand);
-
-            _currentIndex++;
 
             nextCommand.Execute(ExecuteNext);
         }

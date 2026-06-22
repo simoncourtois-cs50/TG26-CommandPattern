@@ -26,10 +26,14 @@ namespace Command.Runtime
             switch (_currentState)
             {
                 case State.Waiting:
+                    Debug.Log("Enter Waiting");
+                    CompletionCallBack();
                     break;
                 case State.Rotating:
+                    Debug.Log("Enter Rotation");
                     break;
                 case State.Moving:
+                    Debug.Log("Enter Moving");
                     break;
             }
         }
@@ -41,8 +45,12 @@ namespace Command.Runtime
                 case State.Waiting:
                     break;
                 case State.Rotating:
+                    HandleTimer();
+                    HandleRotation();
                     break;
                 case State.Moving:
+                    HandleTimer();
+                    HandleMovement();
                     break;
             }
         }
@@ -52,10 +60,13 @@ namespace Command.Runtime
             switch (_currentState)
             {
                 case State.Waiting:
+                    Debug.Log("Exit Waiting");
                     break;
                 case State.Rotating:
+                    Debug.Log("Exit Rotating");
                     break;
                 case State.Moving:
+                    Debug.Log("Exit Moving");
                     break;
             }
         }
@@ -67,11 +78,13 @@ namespace Command.Runtime
 
         private void HandleRotation()
         {
-
+            if (_currentTime <= 0) return;
+            transform.rotation = Quaternion.Lerp(_initialRotation, _destinationRotation, _currentTime);
         }
         private void HandleMovement()
         {
-
+            if (_currentTime <= 0) return;
+            transform.position = Vector3.Lerp(_initialPosition, _destinationPosition, _currentTime);
         }
         private void HandleTimer()
         {
@@ -80,10 +93,14 @@ namespace Command.Runtime
             if (_currentTime < _animationLength) return;
 
             _currentTime = 0;
-            _isMoving = false;
-            _isRotating = false;
+            ChangeState(State.Waiting);
         }
 
+        private void CompletionCallBack()
+        {
+            _completionCallBack();
+        }
+        
         #endregion
 
 
@@ -92,13 +109,18 @@ namespace Command.Runtime
         public void Rotate(float angle, Action completionCallBack)
         {
             _initialRotation = transform.rotation;
-            _destinationRotation = Quaternion.Euler(new Vector3(0, angle, 0));
+            _destinationRotation = _initialRotation * Quaternion.Euler(new Vector3(0, angle, 0));
             _completionCallBack = completionCallBack;
+            ChangeState(State.Rotating);
         }
 
         public void Move(Vector3 direction, float distance, Action completionCallBack)
         {
-            Vector3 initialPostion = transform.position;
+            _initialPosition = transform.position;
+            Vector3 offsetTranslation = transform.TransformDirection(direction);
+            _destinationPosition = _initialPosition + offsetTranslation * distance;
+            _completionCallBack = completionCallBack;
+            ChangeState(State.Moving);
         }
 
         #endregion
@@ -107,8 +129,10 @@ namespace Command.Runtime
 
         private Quaternion _initialRotation;
         private Quaternion _destinationRotation;
+        
         private Vector3 _initialPosition;
         private Vector3 _destinationPosition;
+        
         private Action _completionCallBack;
         
         private enum State
@@ -119,11 +143,6 @@ namespace Command.Runtime
         }
 
         private State _currentState;
-
-        private bool _isRotating;
-        private bool _isMoving;
-        private bool _isWaiting;
-
         private float _currentTime;
 
         [SerializeField] private float _animationLength;
